@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-label="SHAYAN AI splash screen">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#080b1f"/>
+      <stop offset="1" stop-color="#24144e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#g)"/>
+  <circle cx="540" cy="810" r="180" fill="#6957ff"/>
+  <text x="540" y="870" text-anchor="middle" font-family="Arial, sans-serif" font-size="250" font-weight="700" fill="white">S</text>
+  <text x="540" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="66" font-weight="700" letter-spacing="12" fill="white">SHAYAN AI</text>
+</svg>
