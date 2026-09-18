@@ -1,0 +1,6 @@
+{
+  "appId": "com.shayan.ai",
+  "appName": "SHAYAN AI",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

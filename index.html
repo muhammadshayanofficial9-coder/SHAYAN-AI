@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>SHAYAN AI</title>
+    <meta
+      name="description"
+      content="SHAYAN AI — a modern dark-themed AI companion interface ready for Android packaging with Capacitor."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">S</div>
+          <span>SHAYAN AI</span>
+        </div>
+        <button class="ghost-btn" type="button">New chat</button>
+      </header>
+
+      <main class="dashboard">
+        <aside class="sidebar">
+          <div class="sidebar-panel">
+            <p class="eyebrow">Workspace</p>
+            <h2>AI Assistant</h2>
+          </div>
+
+          <nav class="nav-list" aria-label="Quick actions">
+            <button class="nav-item active" type="button">Home</button>
+            <button class="nav-item" type="button">Ideas</button>
+            <button class="nav-item" type="button">Tasks</button>
+            <button class="nav-item" type="button">Research</button>
+          </nav>
+
+          <div class="mini-card">
+            <span class="status-dot"></span>
+            <div>
+              <strong>System online</strong>
+              <small>Ready to assist</small>
+            </div>
+          </div>
+        </aside>
+
+        <section class="content">
+          <div class="hero-card">
+            <p class="eyebrow">Welcome back</p>
+            <h1>Build smarter ideas with SHAYAN AI</h1>
+            <p class="lede">
+              Turn prompts into polished actions, faster workflows, and AI-powered solutions.
+            </p>
+
+            <div class="hero-actions">
+              <button class="primary-btn" type="button">Start a prompt</button>
+              <button class="secondary-btn" type="button">View templates</button>
+            </div>
+          </div>
+
+          <div class="stats-grid" aria-label="Performance metrics">
+            <article class="metric-card">
+              <span>Fast answers</span>
+              <strong>24/7</strong>
+            </article>
+            <article class="metric-card">
+              <span>Prompt quality</span>
+              <strong>High</strong>
+            </article>
+            <article class="metric-card">
+              <span>Workflow mode</span>
+              <strong>Adaptive</strong>
+            </article>
+          </div>
+
+          <div class="prompt-panel">
+            <div class="prompt-header">
+              <h3>Suggested prompts</h3>
+              <button class="link-btn" type="button">Refresh</button>
+            </div>
+
+            <div class="prompt-list">
+              <button class="prompt-item" type="button">Create a launch checklist for a new app</button>
+              <button class="prompt-item" type="button">Summarize this idea into a product brief</button>
+              <button class="prompt-item" type="button">Draft a smart automation workflow</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
