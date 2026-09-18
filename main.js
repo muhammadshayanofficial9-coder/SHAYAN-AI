@@ -1,20 +1,6 @@
-const now = new Date();
-const hour = now.getHours();
-const greeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
-
-const heroEyebrow = document.querySelector('.hero-card .eyebrow');
-if (heroEyebrow) {
-  heroEyebrow.textContent = greeting;
-}
-
-const promptButtons = document.querySelectorAll('.prompt-item');
-promptButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const previous = button.textContent;
-    button.textContent = 'Prompt selected';
-
-    window.setTimeout(() => {
-      button.textContent = previous;
-    }, 1200);
-  });
-});
+const $=(selector)=>document.querySelector(selector);const messages=$('#messages');const prompt=$('#prompt');const form=$('#chat-form');const welcome=()=>$('.welcome-card');
+const replies=['I can help with that. Tell me a little more about your goal, and I’ll turn it into clear next steps.','Great idea. I’d start by defining the outcome, breaking it into small actions, and choosing the first step you can complete today.','Here’s a practical approach: clarify the objective, create a simple plan, then review and improve the result.'];let replyIndex=0;
+function addMessage(text,role){const row=document.createElement('div');row.className=`message ${role}`;row.innerHTML=role==='assistant'?`<span class="message-avatar">S</span><div class="message-bubble"></div>`:`<div class="message-bubble"></div>`;row.querySelector('.message-bubble').textContent=text;messages.append(row);messages.scrollTop=messages.scrollHeight}
+function send(text){const value=text.trim();if(!value)return;if(welcome())welcome().remove();addMessage(value,'user');prompt.value='';prompt.style.height='auto';const typing=document.createElement('div');typing.className='message assistant';typing.innerHTML='<span class="message-avatar">S</span><div class="message-bubble">Thinking…</div>';messages.append(typing);setTimeout(()=>{typing.remove();addMessage(replies[replyIndex++%replies.length],'assistant')},650)}
+form.addEventListener('submit',(event)=>{event.preventDefault();send(prompt.value)});prompt.addEventListener('input',()=>{prompt.style.height='auto';prompt.style.height=`${Math.min(prompt.scrollHeight,130)}px`});document.querySelectorAll('.suggestion').forEach((button)=>button.addEventListener('click',()=>{prompt.value=button.textContent;prompt.focus()}));document.querySelectorAll('.feature-card').forEach((button)=>button.addEventListener('click',()=>{showScreen('chat');prompt.value=button.dataset.prompt;prompt.focus()}));$('#new-chat').addEventListener('click',()=>{messages.innerHTML='<div class="welcome-card"><div class="welcome-icon">✦</div><h2>Welcome to SHAYAN AI</h2><p>Ask anything, plan your work, or turn an idea into something real.</p></div>';showScreen('chat')});$('#clear-chat').addEventListener('click',()=>$('#new-chat').click());$('#menu-btn').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
+function showScreen(name){document.querySelectorAll('.screen').forEach((screen)=>screen.classList.add('hidden'));$(`#${name}-screen`).classList.remove('hidden');document.querySelectorAll('.nav-item[data-screen]').forEach((item)=>item.classList.toggle('active',item.dataset.screen===name));$('#sidebar').classList.remove('open')}document.querySelectorAll('.nav-item[data-screen]').forEach((item)=>item.addEventListener('click',()=>showScreen(item.dataset.screen)));

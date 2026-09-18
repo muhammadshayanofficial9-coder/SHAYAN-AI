@@ -3,98 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#080b1f" />
     <title>SHAYAN AI</title>
-    <meta
-      name="description"
-      content="SHAYAN AI — a modern dark-themed AI companion interface ready for Android packaging with Capacitor."
-    />
+    <meta name="description" content="SHAYAN AI — your focused AI workspace." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="app-shell">
-      <header class="topbar">
-        <div class="brand">
-          <div class="brand-mark">S</div>
-          <span>SHAYAN AI</span>
-        </div>
-        <button class="ghost-btn" type="button">New chat</button>
-      </header>
+      <aside class="sidebar" id="sidebar">
+        <div class="brand"><span class="brand-mark">S</span><span>SHAYAN AI</span></div>
+        <button class="new-chat primary-btn" id="new-chat" type="button"><span>＋</span> New chat</button>
+        <nav class="nav-list" aria-label="Main navigation">
+          <button class="nav-item active" data-screen="chat" type="button"><span>✦</span> Chat</button>
+          <button class="nav-item" data-screen="discover" type="button"><span>⌘</span> Discover</button>
+          <button class="nav-item" data-screen="saved" type="button"><span>▱</span> Saved chats</button>
+        </nav>
+        <div class="recent-label">Recent</div>
+        <div class="recent-chats" id="recent-chats"><button class="recent-chat" type="button">Plan my next project</button></div>
+        <div class="sidebar-bottom"><button class="nav-item" data-screen="settings" type="button"><span>⚙</span> Settings</button><div class="profile"><span class="avatar">M</span><div><strong>My workspace</strong><small>Personal account</small></div><span>•••</span></div></div>
+      </aside>
 
-      <main class="dashboard">
-        <aside class="sidebar">
-          <div class="sidebar-panel">
-            <p class="eyebrow">Workspace</p>
-            <h2>AI Assistant</h2>
+      <main class="main-panel">
+        <header class="topbar"><button class="menu-btn" id="menu-btn" type="button" aria-label="Toggle menu">☰</button><div class="mobile-brand">SHAYAN AI</div><div class="topbar-actions"><button class="icon-btn" type="button" aria-label="Notifications">♢</button><button class="upgrade-btn" type="button">Upgrade</button></div></header>
+        <section class="screen chat-screen" id="chat-screen">
+          <div class="chat-header"><div><p class="eyebrow">Private workspace</p><h1>How can I help you today?</h1></div><button class="icon-btn" id="clear-chat" type="button" aria-label="Clear chat">⌫</button></div>
+          <div class="messages" id="messages" aria-live="polite">
+            <div class="welcome-card"><div class="welcome-icon">✦</div><h2>Welcome to SHAYAN AI</h2><p>Ask anything, plan your work, or turn an idea into something real.</p></div>
           </div>
-
-          <nav class="nav-list" aria-label="Quick actions">
-            <button class="nav-item active" type="button">Home</button>
-            <button class="nav-item" type="button">Ideas</button>
-            <button class="nav-item" type="button">Tasks</button>
-            <button class="nav-item" type="button">Research</button>
-          </nav>
-
-          <div class="mini-card">
-            <span class="status-dot"></span>
-            <div>
-              <strong>System online</strong>
-              <small>Ready to assist</small>
-            </div>
-          </div>
-        </aside>
-
-        <section class="content">
-          <div class="hero-card">
-            <p class="eyebrow">Welcome back</p>
-            <h1>Build smarter ideas with SHAYAN AI</h1>
-            <p class="lede">
-              Turn prompts into polished actions, faster workflows, and AI-powered solutions.
-            </p>
-
-            <div class="hero-actions">
-              <button class="primary-btn" type="button">Start a prompt</button>
-              <button class="secondary-btn" type="button">View templates</button>
-            </div>
-          </div>
-
-          <div class="stats-grid" aria-label="Performance metrics">
-            <article class="metric-card">
-              <span>Fast answers</span>
-              <strong>24/7</strong>
-            </article>
-            <article class="metric-card">
-              <span>Prompt quality</span>
-              <strong>High</strong>
-            </article>
-            <article class="metric-card">
-              <span>Workflow mode</span>
-              <strong>Adaptive</strong>
-            </article>
-          </div>
-
-          <div class="prompt-panel">
-            <div class="prompt-header">
-              <h3>Suggested prompts</h3>
-              <button class="link-btn" type="button">Refresh</button>
-            </div>
-
-            <div class="prompt-list">
-              <button class="prompt-item" type="button">Create a launch checklist for a new app</button>
-              <button class="prompt-item" type="button">Summarize this idea into a product brief</button>
-              <button class="prompt-item" type="button">Draft a smart automation workflow</button>
-            </div>
-          </div>
+          <div class="composer-wrap"><div class="suggestions"><button class="suggestion" type="button">Help me brainstorm ideas</button><button class="suggestion" type="button">Write a product brief</button><button class="suggestion" type="button">Create a learning plan</button></div><form class="composer" id="chat-form"><button class="attach-btn" type="button" aria-label="Attach file">＋</button><textarea id="prompt" rows="1" placeholder="Message SHAYAN AI..." aria-label="Message SHAYAN AI"></textarea><button class="send-btn" type="submit" aria-label="Send message">↑</button></form><small class="disclaimer">SHAYAN AI can make mistakes. Check important information.</small></div>
         </section>
+        <section class="screen hidden" id="discover-screen"><div class="page-heading"><p class="eyebrow">Explore</p><h1>Discover possibilities</h1><p>Start with a focused template and make it your own.</p></div><div class="discover-grid"><button class="feature-card" data-prompt="Create a launch plan for my next product"><span>🚀</span><strong>Launch a product</strong><small>From idea to launch checklist</small></button><button class="feature-card" data-prompt="Help me write a clear and professional email"><span>✍️</span><strong>Write better</strong><small>Draft, rewrite, and polish anything</small></button><button class="feature-card" data-prompt="Create a weekly learning plan for a new skill"><span>🧠</span><strong>Learn something new</strong><small>Build a practical learning path</small></button><button class="feature-card" data-prompt="Analyze this problem and suggest solutions"><span>💡</span><strong>Solve a problem</strong><small>Break complex work into steps</small></button></div></section>
+        <section class="screen hidden" id="saved-screen"><div class="page-heading"><p class="eyebrow">Library</p><h1>Saved chats</h1><p>Your important conversations will appear here.</p></div><div class="empty-state"><div>▱</div><h2>No saved chats yet</h2><p>Save useful conversations to find them quickly later.</p></div></section>
+        <section class="screen hidden" id="settings-screen"><div class="page-heading"><p class="eyebrow">Preferences</p><h1>Settings</h1><p>Personalize your SHAYAN AI experience.</p></div><div class="settings-card"><label>Appearance <select><option>Dark theme</option><option>System default</option></select></label><label>Response style <select><option>Balanced</option><option>Concise</option><option>Detailed</option></select></label><label class="toggle-row">Save chat history <input type="checkbox" checked /></label></div></section>
       </main>
     </div>
-
     <script type="module" src="./main.js"></script>
   </body>
 </html>
